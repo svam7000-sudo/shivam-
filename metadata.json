@@ -1,0 +1,6 @@
+{
+  "name": "SHIVAM MNP BOOKING",
+  "description": "Port your SIM easily from home. Official MNP & New Jio SIM Doorstep Booking service by Shivam Kumar in Sasaram, Bihar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
