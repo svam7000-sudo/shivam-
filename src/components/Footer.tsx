@@ -8,13 +8,11 @@ import { LegalModalType } from './LegalModals';
 interface FooterProps {
   lang: Language;
   onOpenLegal: (type: LegalModalType) => void;
-  onOpenSettings: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   lang,
   onOpenLegal,
-  onOpenSettings,
 }) => {
   const t = TRANSLATIONS[lang];
   const activeWhatsApp = getActiveWhatsAppNumber();
@@ -128,14 +126,6 @@ export const Footer: React.FC<FooterProps> = ({
                   {t.footer.termsConditions}
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={onOpenSettings}
-                  className="text-xs text-slate-500 hover:text-slate-300 transition-colors cursor-pointer underline"
-                >
-                  {lang === 'hi' ? 'व्हाट्सएप नंबर / होस्टिंग सेटिंग्स' : 'Business Settings & GitHub Hosting'}
-                </button>
-              </li>
             </ul>
 
             {/* Direct Contact info in footer */}
@@ -145,8 +135,8 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>{BUSINESS_CONFIG.location}</span>
               </p>
               <p className="flex items-center gap-1.5 font-mono">
-                <Phone className="w-3.5 h-3.5 text-slate-500" />
-                <span>+{activeWhatsApp}</span>
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-white font-bold">{BUSINESS_CONFIG.displayPhone}</span>
               </p>
             </div>
           </div>

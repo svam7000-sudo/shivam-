@@ -127,7 +127,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-emerald-600" />
                     <p className="text-base font-bold text-slate-900 font-mono">
-                      +{activeWhatsApp}
+                      {BUSINESS_CONFIG.displayPhone}
                     </p>
                   </div>
                 </div>

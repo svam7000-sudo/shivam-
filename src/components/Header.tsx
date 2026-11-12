@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Menu, X, Globe, Settings2, ShieldCheck } from 'lucide-react';
+import { Phone, MessageCircle, Menu, X, Globe, ShieldCheck } from 'lucide-react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 import { BUSINESS_CONFIG, getActiveWhatsAppNumber, getWhatsAppUrl } from '../config';
@@ -7,14 +7,12 @@ import { BUSINESS_CONFIG, getActiveWhatsAppNumber, getWhatsAppUrl } from '../con
 interface HeaderProps {
   lang: Language;
   onToggleLang: () => void;
-  onOpenSettings: () => void;
   onNavigateToBooking: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   lang,
   onToggleLang,
-  onOpenSettings,
   onNavigateToBooking,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -54,14 +52,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="flex items-center gap-4 text-slate-300">
             <span>{BUSINESS_CONFIG.workingHours}</span>
-            <button
-              onClick={onOpenSettings}
-              className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
-              title="Configure WhatsApp Number"
-            >
-              <Settings2 className="w-3 h-3" />
-              <span>{lang === 'hi' ? 'नंबर सेटिंग' : 'Admin'}</span>
-            </button>
+            <span className="text-slate-500">·</span>
+            <span className="text-emerald-400 font-mono font-semibold">📞 {BUSINESS_CONFIG.displayPhone}</span>
           </div>
         </div>
       </div>
@@ -167,15 +159,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <div className="flex items-center justify-between text-xs text-slate-500 pt-2 px-1">
               <span>{BUSINESS_CONFIG.location}</span>
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenSettings();
-                }}
-                className="text-slate-600 hover:text-slate-900 underline font-medium"
-              >
-                {lang === 'hi' ? 'नंबर बदलें' : 'Settings'}
-              </button>
+              <span className="text-emerald-700 font-semibold font-mono">{BUSINESS_CONFIG.displayPhone}</span>
             </div>
           </div>
         </div>

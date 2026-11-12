@@ -1,9 +1,6 @@
 /**
  * SHIVAM MNP BOOKING - Configuration
- * 
- * Replace DEFAULT_WHATSAPP_NUMBER with your actual business WhatsApp number
- * including the 91 country code (without + or spaces).
- * Example: "919876543210"
+ * Business WhatsApp & Contact: 9162029954
  */
 
 export const BUSINESS_CONFIG = {
@@ -11,8 +8,9 @@ export const BUSINESS_CONFIG = {
   ownerName: 'SHIVAM KUMAR',
   location: 'Sasaram, Bihar',
   addressDetail: 'Sasaram, District Rohtas, Bihar, PIN: 821115',
-  defaultWhatsAppNumber: '919876543210', // Replace with your 10-digit/12-digit number (e.g., 919876543210)
-  displayPhone: '+91 98765 43210',
+  defaultWhatsAppNumber: '919162029954', // 91 + 9162029954
+  displayPhone: '+91 91620 29954',
+  rawMobile: '9162029954',
   email: 'shivamart69@gmail.com',
   workingHours: '9:00 AM - 8:00 PM (Monday to Sunday)',
   servicesOffered: 'Jio MNP, New SIM, Home MNP Service',
@@ -29,27 +27,8 @@ export const BUSINESS_CONFIG = {
   pricingNote: 'Free Doorstep SIM Delivery & Porting Assistance'
 };
 
-const STORAGE_KEY_WHATSAPP = 'shivam_mnp_whatsapp_number';
-
 export function getActiveWhatsAppNumber(): string {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY_WHATSAPP);
-    if (saved && saved.trim().length >= 10) {
-      return saved.trim().replace(/\D/g, '');
-    }
-  } catch (e) {
-    console.error(e);
-  }
   return BUSINESS_CONFIG.defaultWhatsAppNumber;
-}
-
-export function setActiveWhatsAppNumber(newNumber: string): void {
-  const cleaned = newNumber.replace(/\D/g, '');
-  localStorage.setItem(STORAGE_KEY_WHATSAPP, cleaned);
-}
-
-export function resetWhatsAppNumber(): void {
-  localStorage.removeItem(STORAGE_KEY_WHATSAPP);
 }
 
 /**

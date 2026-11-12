@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { MNPServices } from './components/MNPServices';
@@ -14,7 +14,6 @@ import { ContactSection } from './components/ContactSection';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { LegalModals, LegalModalType } from './components/LegalModals';
-import { OwnerSettingsModal } from './components/OwnerSettingsModal';
 import { FloatingMobileCTA } from './components/FloatingMobileCTA';
 import { Language, ServiceType, Operator, BookingFormData } from './types';
 
@@ -30,10 +29,6 @@ export default function App() {
 
   // Legal Modal State
   const [legalModalType, setLegalModalType] = useState<LegalModalType>(null);
-
-  // Owner Settings Modal State
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [, setRefreshKey] = useState(0);
 
   // Toggle Language Handler
   const handleToggleLang = () => {
@@ -55,7 +50,6 @@ export default function App() {
     const formElement = document.getElementById('booking-form');
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth' });
-      // Focus name input after small delay
       setTimeout(() => {
         const nameInput = document.querySelector<HTMLInputElement>('input[name="fullName"]');
         if (nameInput) nameInput.focus();
@@ -85,7 +79,6 @@ export default function App() {
       <Header
         lang={lang}
         onToggleLang={handleToggleLang}
-        onOpenSettings={() => setIsSettingsOpen(true)}
         onNavigateToBooking={handleNavigateToBooking}
       />
 
@@ -128,7 +121,6 @@ export default function App() {
       <Footer
         lang={lang}
         onOpenLegal={(type) => setLegalModalType(type)}
-        onOpenSettings={() => setIsSettingsOpen(true)}
       />
 
       {/* Sticky Mobile Quick Action Bar (Under 15% sticky cap) */}
@@ -151,13 +143,6 @@ export default function App() {
         modalType={legalModalType}
         onClose={() => setLegalModalType(null)}
         lang={lang}
-      />
-
-      {/* Business Owner Settings Modal (To test or customize WhatsApp number) */}
-      <OwnerSettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-        onNumberChanged={() => setRefreshKey((k) => k + 1)}
       />
 
     </div>
